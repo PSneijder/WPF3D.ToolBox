@@ -4,7 +4,7 @@
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:mahApps="http://metro.mahapps.com/winfx/xaml/controls"
-                      xmlns:controls="clr-namespace:WPF3D.ToolBox.Controls.TDM.GL.Device.POC.Controls"
+                      xmlns:controls="clr-namespace:WPF3D.ToolBox.Controls"
                       mc:Ignorable="d"
                       Title="WPF3D.ToolBox" Height="600" Width="600"
                       ResizeMode="CanResizeWithGrip"
