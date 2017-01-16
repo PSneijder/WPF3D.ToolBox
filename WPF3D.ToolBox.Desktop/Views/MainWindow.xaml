@@ -7,6 +7,7 @@
                       xmlns:controls="clr-namespace:WPF3D.ToolBox.Controls"
                       xmlns:tools="clr-namespace:WPF3D.ToolBox.Controls;assembly=WPF3D.ToolBox"
                       xmlns:converters="clr-namespace:WPF3D.ToolBox.Converters;assembly=WPF3D.ToolBox"
+                      xmlns:toolBox="clr-namespace:WPF3D.ToolBox;assembly=WPF3D.ToolBox"
                       mc:Ignorable="d"
                       Title="WPF3D.ToolBox" Height="600" Width="600"
                       ResizeMode="CanResizeWithGrip"
@@ -55,15 +56,18 @@
                                       Header="RotationTransform">
                 <controls:GroupBoxControl Header="X">
                     <Slider Name="RotationSliderX" Minimum="0" Maximum="360" Value="0"
-                            mahApps:SliderHelper.EnableMouseWheel="MouseHover" />
+                            mahApps:SliderHelper.EnableMouseWheel="MouseHover"
+                            mahApps:SliderHelper.ChangeValueBy="LargeChange" />
                 </controls:GroupBoxControl>
                 <controls:GroupBoxControl Header="Y">
                     <Slider Name="RotationSliderY" Minimum="0" Maximum="360" Value="0"
-                            mahApps:SliderHelper.EnableMouseWheel="MouseHover" />
+                            mahApps:SliderHelper.EnableMouseWheel="MouseHover"
+                            mahApps:SliderHelper.ChangeValueBy="LargeChange" />
                 </controls:GroupBoxControl>
                 <controls:GroupBoxControl Header="Z">
                     <Slider Name="RotationSliderZ" Minimum="0" Maximum="360" Value="0"
-                            mahApps:SliderHelper.EnableMouseWheel="MouseHover" />
+                            mahApps:SliderHelper.EnableMouseWheel="MouseHover"
+                            mahApps:SliderHelper.ChangeValueBy="LargeChange" />
                 </controls:GroupBoxControl>
             </controls:GroupBoxControl>
         </StackPanel>
@@ -73,6 +77,13 @@
                            Grid.ColumnSpan="2"
                            Cursor="Hand"
                            ViewMode="Solid">
+
+            <toolBox:ScreenSpaceLines3D Color="Red" Thickness="2"
+                                        Points="0,0,0 1.5,0,0" />
+            <toolBox:ScreenSpaceLines3D Color="Green" Thickness="2"
+                                        Points="0,0,0 0,1.5,0" />
+            <toolBox:ScreenSpaceLines3D Color="Blue" Thickness="2"
+                                        Points="0,0,0 0,0,1.5" />
 
             <ModelVisual3D>
                 <ModelVisual3D.Children>
@@ -115,12 +126,12 @@
 									                                  16,17,18  18,19,16
 									                                  20,23,22  22,21,20"
 
-                                                            Positions = "-1,-1,1   -1,-1,-1  1,-1,-1  1,-1,1
-													                     -1,1,1    -1,1,-1   1,1,-1   1,1,1
-													                     -1,-1,1   -1,1,1    1,1,1    1,-1,1
-										                                 -1,-1,-1  -1,1,-1   1,1,-1   1,-1,-1
-										                                 -1,-1,1   -1,1,1   -1,1,-1  -1,-1,-1
-											                              1,-1,1    1,1,1    1,1,-1   1,-1,-1" />
+                                                    Positions = "-1,-1,1   -1,-1,-1  1,-1,-1  1,-1,1
+													             -1,1,1    -1,1,-1   1,1,-1   1,1,1
+													             -1,-1,1   -1,1,1    1,1,1    1,-1,1
+										                         -1,-1,-1  -1,1,-1   1,1,-1   1,-1,-1
+										                         -1,-1,1   -1,1,1   -1,1,-1  -1,-1,-1
+											                      1,-1,1    1,1,1    1,1,-1   1,-1,-1" />
                                 </GeometryModel3D.Geometry>
 
                                 <GeometryModel3D.Material>
@@ -137,73 +148,6 @@
 
             </ModelVisual3D>
         </tools:Trackport3D>
-
-        <!--<Viewport3D Grid.Row="1">
-            <Viewport3D.Camera>
-                <PerspectiveCamera LookDirection = "-4, -4, -4"
-                                   UpDirection = "0, 1, 0"
-                                   Position = "4, 4, 4"
-                                   FieldOfView = "45" />
-            </Viewport3D.Camera>
-
-            <ModelVisual3D>
-                <ModelVisual3D.Children>
-                    <ModelVisual3D>
-                        <ModelVisual3D.Content>
-                            <DirectionalLight Color="#FFFFFF"
-                                              Direction="-0.5,-0.3,-1"/>
-                        </ModelVisual3D.Content>
-                    </ModelVisual3D>
-
-                    <ModelVisual3D>
-                        <ModelVisual3D.Transform>
-                            <Transform3DGroup >
-                                <Transform3DGroup.Children>
-
-                                    <ScaleTransform3D CenterX="0" CenterY="0" CenterZ="0"
-                                                      ScaleX="{Binding ElementName=SliderX, Path=Value}" ScaleY="1" ScaleZ="1" />
-
-                                    <ScaleTransform3D CenterX="0" CenterY="0" CenterZ="0"
-                                                      ScaleY="{Binding ElementName=SliderY, Path=Value}" ScaleX="1" ScaleZ="1" />
-
-                                    <ScaleTransform3D CenterX="0" CenterY="0" CenterZ="0"
-                                                      ScaleZ="{Binding ElementName=SliderZ, Path=Value}" ScaleX="1" ScaleY="1" />
-
-                                </Transform3DGroup.Children>
-                            </Transform3DGroup>
-                        </ModelVisual3D.Transform>
-
-                        <ModelVisual3D.Content>
-                            <GeometryModel3D>
-                                <GeometryModel3D.Geometry>
-                                    <MeshGeometry3D TriangleIndices = "0,1,2     2,3,0  
-									                                   4,7,6     6,5,4  
-									                                   8,11,10   10,9,8  
-									                                   12,13,14  14,15,12  
-									                                   16,17,18  18,19,16
-									                                   20,23,22  22,21,20"
-
-                                                            Positions = "-1,-1,1   -1,-1,-1  1,-1,-1  1,-1,1
-													                    -1,1,1    -1,1,-1   1,1,-1   1,1,1
-													                    -1,-1,1   -1,1,1    1,1,1    1,-1,1
-										                                -1,-1,-1  -1,1,-1   1,1,-1   1,-1,-1
-										                                -1,-1,1   -1,1,1   -1,1,-1  -1,-1,-1
-											                             1,-1,1    1,1,1    1,1,-1   1,-1,-1" />
-                                </GeometryModel3D.Geometry>
-
-                                <GeometryModel3D.Material>
-                                    <DiffuseMaterial>
-                                        <DiffuseMaterial.Brush>
-                                            <SolidColorBrush Color="Green" />
-                                        </DiffuseMaterial.Brush>
-                                    </DiffuseMaterial>
-                                </GeometryModel3D.Material>
-                            </GeometryModel3D>
-                        </ModelVisual3D.Content>
-                    </ModelVisual3D>
-                </ModelVisual3D.Children>
-            </ModelVisual3D>
-        </Viewport3D>-->
 
     </Grid>
 </mahApps:MetroWindow>

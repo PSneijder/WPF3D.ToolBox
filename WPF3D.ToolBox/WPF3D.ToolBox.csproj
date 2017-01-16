@@ -44,6 +44,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ScreenSpaceText3D.cs" />
     <Compile Include="Converters\Rotate3DConverter.cs" />
     <Compile Include="ScreenSpaceLines3D.cs" />
     <Compile Include="Trackball.cs" />
