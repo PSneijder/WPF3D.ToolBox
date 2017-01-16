@@ -20,8 +20,7 @@
                     <AmbientLight x:Name="AmbientLight" 
                                   Color="Black" />
                     <DirectionalLight x:Name="Headlight"
-                                      Color="White"
-                                      Direction="-0.5,-0.3,-1" />
+                                      Color="White" />
                 </Model3DGroup>
             </ModelVisual3D.Content>
         </ModelVisual3D>

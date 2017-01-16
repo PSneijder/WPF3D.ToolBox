@@ -19,7 +19,7 @@ namespace WPF3D.ToolBox
     /// is specified in the 2D coordinate system of the container
     /// Viewport3D, not the screen.
     /// </summary>
-    sealed class ScreenSpaceLines3D
+    public sealed class ScreenSpaceLines3D
         : ModelVisual3D
     {
         public static readonly DependencyProperty ColorProperty =
