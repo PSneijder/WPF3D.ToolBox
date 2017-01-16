@@ -8,7 +8,7 @@ namespace WPF3D.ToolBox
     /// <summary>
     /// Matrix3DStack is a stack of Matrix3Ds.
     /// </summary>
-    public class Matrix3DStack 
+    sealed class Matrix3DStack 
         : IEnumerable<Matrix3D>
             , ICollection
     {
